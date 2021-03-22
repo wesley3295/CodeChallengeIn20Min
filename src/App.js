@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
-
+import BookList from './components/BookList';
+import BookForm from './components/BookForm';
+import {useState} from 'react'
 function App() {
+
+const [books,setBooks]=useState([
+  {title: "Enoch is Dope",
+  author: "2slice and Wes",
+  }
+])
+
+ const addBook=(props)=>{
+console.log(props)
+setBooks([...books,props])
+}
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BookForm addBook={addBook}/>
+      <BookList  books={books}/>
     </div>
   );
 }
